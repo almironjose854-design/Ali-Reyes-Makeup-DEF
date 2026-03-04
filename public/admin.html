@@ -1,0 +1,1255 @@
+﻿<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Admin - Ali Reyes MakeUp</title>
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="admin-styles.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Manrope:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+</head>
+<body class="admin-body">
+  <div class="admin-layout">
+    <aside class="admin-sidebar">
+      <div class="admin-logo">
+        <div class="logo-icon"><i class="fas fa-crown"></i></div>
+        <div>
+          <h1>Ali Reyes</h1>
+          <p>Panel Admin</p>
+        </div>
+      </div>
+
+      <nav class="admin-nav">
+        <button class="nav-item active" onclick="mostrarSeccion('dashboard')"><i class="fas fa-chart-line"></i> Dashboard</button>
+        <button class="nav-item" onclick="mostrarSeccion('servicios')"><i class="fas fa-scissors"></i> Servicios</button>
+        <button class="nav-item" onclick="mostrarSeccion('lookbook')"><i class="fas fa-images"></i> Lookbook</button>
+        <button class="nav-item" onclick="mostrarSeccion('turnos')"><i class="fas fa-calendar-check"></i> Turnos</button>
+        <button class="nav-item" onclick="mostrarSeccion('clientes')"><i class="fas fa-user-group"></i> Clientes</button>
+        <button class="nav-item" onclick="mostrarSeccion('colaboradores')"><i class="fas fa-user-tie"></i> Colaboradores</button>
+        <button class="nav-item" onclick="mostrarSeccion('giftcards')"><i class="fas fa-gift"></i> Giftcards</button>
+        <button class="nav-item" onclick="mostrarSeccion('marketing')"><i class="fas fa-bullhorn"></i> Marketing</button>
+        <button class="nav-item" onclick="mostrarSeccion('calendario')"><i class="fas fa-calendar"></i> Calendario</button>
+        <button class="nav-item" onclick="mostrarSeccion('reportes')"><i class="fas fa-chart-pie"></i> Reportes</button>
+        <button class="nav-item" onclick="mostrarSeccion('config')"><i class="fas fa-gear"></i> Configuraci&oacute;n</button>
+        <button class="nav-item" onclick="window.location.href='/'"><i class="fas fa-home"></i> Volver al sitio</button>
+      </nav>
+    </aside>
+
+    <main class="admin-content">
+      <header class="admin-header">
+        <div class="header-top">
+          <div class="header-left">
+            <h2 id="adminTitle">Dashboard</h2>
+            <p class="header-subtitle">Panel central con accesos r&aacute;pidos y buscador.</p>
+          </div>
+          <div class="header-right">
+            <div class="header-search" id="buscadorServiciosWrapper">
+              <i class="fas fa-search" aria-hidden="true"></i>
+              <input
+                type="search"
+                id="buscadorServicios"
+                placeholder="Buscar servicios por nombre o categor&iacute;a"
+                aria-label="Buscar servicios"
+                autocomplete="off"
+                oninput="buscarServiciosGlobal()"
+              />
+              <div id="buscadorServiciosResultados" class="search-results" role="listbox"></div>
+            </div>
+            <div class="header-actions stacked">
+              <button class="btn btn-primary" onclick="abrirModalTurno()"><i class="fas fa-calendar-plus"></i> Nuevo turno</button>
+              <button class="btn btn-secondary" onclick="abrirModalServicio()"><i class="fas fa-scissors"></i> Nuevo servicio</button>
+              <button class="btn btn-secondary" onclick="enviarRecordatorios()"><i class="fab fa-whatsapp"></i> Recordatorios</button>
+              <button class="btn btn-secondary" onclick="mostrarSeccion('config')"><i class="fas fa-gear"></i> Ajustes</button>
+              <button class="btn btn-secondary" onclick="exportarPDFSemanal()"><i class="fas fa-file-pdf"></i> Exportar PDF</button>
+              <button class="btn btn-secondary" onclick="descargarRespaldo()"><i class="fas fa-download"></i> Respaldo</button>
+              <button class="btn btn-secondary" onclick="cerrarSesion()"><i class="fas fa-right-from-bracket"></i> Cerrar sesi&oacute;n</button>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <div class="quick-sections" aria-label="Accesos rápidos">
+        <button class="quick-card active" data-seccion="dashboard" type="button" onclick="mostrarSeccion('dashboard')">
+          <span class="quick-icon"><i class="fas fa-chart-line"></i></span>
+          <div>
+            <strong>Dashboard</strong>
+            <small>Vista general</small>
+          </div>
+        </button>
+        <button class="quick-card" data-seccion="servicios" type="button" onclick="mostrarSeccion('servicios')">
+          <span class="quick-icon"><i class="fas fa-scissors"></i></span>
+          <div>
+            <strong>Servicios</strong>
+            <small>Precios y duraci&oacute;n</small>
+          </div>
+        </button>
+        <button class="quick-card" data-seccion="turnos" type="button" onclick="mostrarSeccion('turnos')">
+          <span class="quick-icon"><i class="fas fa-calendar-check"></i></span>
+          <div>
+            <strong>Turnos</strong>
+            <small>Confirmaciones</small>
+          </div>
+        </button>
+        <button class="quick-card" data-seccion="calendario" type="button" onclick="mostrarSeccion('calendario')">
+          <span class="quick-icon"><i class="fas fa-calendar"></i></span>
+          <div>
+            <strong>Calendario</strong>
+            <small>Disponibilidad</small>
+          </div>
+        </button>
+        <button class="quick-card" data-seccion="reportes" type="button" onclick="mostrarSeccion('reportes')">
+          <span class="quick-icon"><i class="fas fa-chart-pie"></i></span>
+          <div>
+            <strong>Reportes</strong>
+            <small>Ingresos y top</small>
+          </div>
+        </button>
+        <button class="quick-card" data-seccion="marketing" type="button" onclick="mostrarSeccion('marketing')">
+          <span class="quick-icon"><i class="fas fa-bullhorn"></i></span>
+          <div>
+            <strong>Marketing</strong>
+            <small>Banners y sorteos</small>
+          </div>
+        </button>
+      </div>
+
+      <section id="dashboardSection" class="dashboard-section">
+        <div class="alert-banner" id="pendientesBanner" style="display:none;"></div>
+
+        <div class="dashboard-stack">
+          <div class="dashboard-block">
+            <div class="block-head">
+              <div>
+                <h3 class="block-title">Resumen r&aacute;pido</h3>
+                <p class="block-subtitle">Estado general del d&iacute;a</p>
+              </div>
+            </div>
+            <div class="stats-grid">
+              <div class="stat-card">
+                <span class="stat-label">Servicios activos</span>
+                <h3 id="totalServicios">0</h3>
+              </div>
+              <div class="stat-card">
+                <span class="stat-label">Turnos hoy</span>
+                <h3 id="turnosHoy">0</h3>
+              </div>
+              <div class="stat-card">
+                <span class="stat-label">Ingresos hoy</span>
+                <h3 id="ingresosHoy">0 Gs</h3>
+              </div>
+              <div class="stat-card">
+                <span class="stat-label">Pendientes</span>
+                <h3 id="turnosPendientes">0</h3>
+              </div>
+              <div class="stat-card">
+                <span class="stat-label">Contactos hoy</span>
+                <h3 id="contactosHoy">0</h3>
+              </div>
+            </div>
+          </div>
+
+          <div class="dashboard-block">
+            <div class="block-head">
+              <div>
+                <h3 class="block-title">Insights</h3>
+                <p class="block-subtitle">Tendencias y pr&oacute;ximos turnos</p>
+              </div>
+            </div>
+            <div class="insights-grid">
+              <div class="insight-card">
+                <h4>Servicios m&aacute;s pedidos</h4>
+                <ul id="topServicios"></ul>
+              </div>
+              <div class="insight-card">
+                <h4>Horarios con m&aacute;s demanda</h4>
+                <ul id="topHorarios"></ul>
+              </div>
+              <div class="insight-card">
+                <h4>Pr&oacute;ximos 7 d&iacute;as</h4>
+                <div id="proximosTurnos"></div>
+              </div>
+            </div>
+          </div>
+
+          <div class="dashboard-block">
+            <div class="block-head">
+              <div>
+                <h3 class="block-title">Rendimiento</h3>
+                <p class="block-subtitle">&Uacute;ltimos 7 d&iacute;as</p>
+              </div>
+            </div>
+            <div class="charts-grid">
+              <div class="insight-card chart-card">
+                <h4>Turnos</h4>
+                <canvas id="turnosChart"></canvas>
+              </div>
+              <div class="insight-card chart-card">
+                <h4>Ingresos</h4>
+                <canvas id="ingresosChart"></canvas>
+              </div>
+              <div class="insight-card chart-card">
+                <h4>Ingresos por servicio</h4>
+                <canvas id="ingresosServicioChart"></canvas>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="serviciosSection" style="display:none;">
+        <div class="section-head">
+          <div>
+            <h3>Gesti&oacute;n de servicios</h3>
+            <p class="section-subtitle">Actualiza precios, duraci&oacute;n e im&aacute;genes.</p>
+          </div>
+          <button class="btn btn-primary" onclick="abrirModalServicio()"><i class="fas fa-plus"></i> Nuevo servicio</button>
+        </div>
+        <div class="filters">
+          <input type="search" id="filtroServiciosTexto" class="form-control" placeholder="Buscar por nombre, categor&iacute;a o descripci&oacute;n" oninput="actualizarListaServicios()" />
+          <select id="filtroServiciosEstado" class="form-control" onchange="actualizarListaServicios()" style="max-width:200px;">
+            <option value="">Todos los estados</option>
+            <option value="activo">Activos</option>
+            <option value="inactivo">Inactivos</option>
+          </select>
+          <button class="btn btn-secondary" type="button" onclick="limpiarFiltrosServicios()"><i class="fas fa-xmark"></i> Limpiar</button>
+        </div>
+        <div class="table-container">
+          <table class="admin-table">
+            <caption class="sr-only">Listado de servicios</caption>
+            <thead>
+              <tr>
+                <th scope="col">Imagen</th>
+                <th scope="col">Nombre</th>
+                <th scope="col">Estado</th>
+                <th scope="col">Duraci&oacute;n</th>
+                <th scope="col">Precio</th>
+                <th scope="col">Comisión</th>
+                <th scope="col">Acciones</th>
+              </tr>
+            </thead>
+            <tbody id="listaServicios"></tbody>
+          </table>
+        </div>
+        <div class="pagination" id="paginacionServicios"></div>
+      </section>
+
+      <section id="lookbookSection" style="display:none;">
+        <div class="section-head">
+          <div>
+            <h3>Lookbook</h3>
+            <p class="section-subtitle">Gestiona las fotos inspiracionales del sitio.</p>
+          </div>
+          <button class="btn btn-primary" onclick="abrirModalLookbook()"><i class="fas fa-plus"></i> Nuevo lookbook</button>
+        </div>
+        <div class="filters">
+          <input type="search" id="filtroLookbookTexto" class="form-control" placeholder="Buscar por t&iacute;tulo o descripci&oacute;n" oninput="actualizarListaLookbook()" />
+          <select id="filtroLookbookEstado" class="form-control" onchange="actualizarListaLookbook()" style="max-width:200px;">
+            <option value="">Todos los estados</option>
+            <option value="activo">Activos</option>
+            <option value="inactivo">Inactivos</option>
+          </select>
+          <button class="btn btn-secondary" type="button" onclick="limpiarFiltrosLookbook()"><i class="fas fa-xmark"></i> Limpiar</button>
+        </div>
+        <div class="table-container">
+          <table class="admin-table">
+            <caption class="sr-only">Listado de lookbook</caption>
+            <thead>
+              <tr>
+                <th scope="col">Imagen</th>
+                <th scope="col">T&iacute;tulo</th>
+                <th scope="col">Estado</th>
+                <th scope="col">Orden</th>
+                <th scope="col">Acciones</th>
+              </tr>
+            </thead>
+            <tbody id="listaLookbook"></tbody>
+          </table>
+        </div>
+        <div class="pagination" id="paginacionLookbook"></div>
+      </section>
+
+      <section id="turnosSection" style="display:none;">
+        <div class="section-head">
+          <div>
+            <h3>Gesti&oacute;n de turnos</h3>
+            <p class="section-subtitle">Confirma, reprograma o cancela reservas.</p>
+          </div>
+          <div class="header-actions">
+            <button class="btn btn-primary" onclick="abrirModalTurno()"><i class="fas fa-plus"></i> Nuevo turno</button>
+            <button class="btn btn-secondary" onclick="enviarRecordatorios()"><i class="fab fa-whatsapp"></i> Recordatorios</button>
+          </div>
+        </div>
+        <div class="filters">
+          <input type="search" id="filtroTextoTurnos" class="form-control" placeholder="Buscar por cliente, CI, tel&eacute;fono o servicio" oninput="actualizarListaTurnos()" />
+          <select id="filtroEstado" class="form-control" style="max-width:200px;" onchange="actualizarListaTurnos()">
+            <option value="">Todos los estados</option>
+            <option value="pendiente">Pendientes</option>
+            <option value="confirmado">Confirmados</option>
+            <option value="en_camino">En camino</option>
+            <option value="en_servicio">En servicio</option>
+            <option value="no_show">No-show</option>
+            <option value="finalizado">Finalizados</option>
+            <option value="cancelado">Cancelados</option>
+            <option value="en_progreso">En progreso (legado)</option>
+            <option value="completado">Completado (legado)</option>
+          </select>
+          <input type="date" id="filtroFecha" class="form-control" style="max-width:200px;" onchange="actualizarListaTurnos()" />
+          <button class="btn btn-secondary" type="button" onclick="filtrarTurnos()"><i class="fas fa-filter"></i> Filtrar</button>
+          <button class="btn btn-secondary" type="button" onclick="limpiarFiltros()"><i class="fas fa-xmark"></i> Limpiar</button>
+        </div>
+        <div class="dashboard-block turnos-tools">
+          <div class="header-actions">
+            <button class="btn btn-secondary" type="button" onclick="togglePanelColumnasTurnos()"><i class="fas fa-table-columns"></i> Columnas</button>
+            <button class="btn btn-secondary" type="button" onclick="guardarFiltrosTurnosActuales()"><i class="fas fa-bookmark"></i> Guardar filtros</button>
+            <button class="btn btn-secondary" type="button" onclick="restaurarFiltrosTurnosGuardados()"><i class="fas fa-rotate-left"></i> Cargar filtros</button>
+          </div>
+          <div id="panelColumnasTurnos" class="turnos-columns-panel" style="display:none;">
+            <label class="check-inline"><input type="checkbox" id="colTurnoCliente" checked onchange="aplicarConfiguracionColumnasTurnos()" /> Cliente</label>
+            <label class="check-inline"><input type="checkbox" id="colTurnoServicios" checked onchange="aplicarConfiguracionColumnasTurnos()" /> Servicios</label>
+            <label class="check-inline"><input type="checkbox" id="colTurnoFecha" checked onchange="aplicarConfiguracionColumnasTurnos()" /> Fecha</label>
+            <label class="check-inline"><input type="checkbox" id="colTurnoHora" checked onchange="aplicarConfiguracionColumnasTurnos()" /> Hora</label>
+            <label class="check-inline"><input type="checkbox" id="colTurnoColaborador" checked onchange="aplicarConfiguracionColumnasTurnos()" /> Colaborador</label>
+            <label class="check-inline"><input type="checkbox" id="colTurnoEstado" checked onchange="aplicarConfiguracionColumnasTurnos()" /> Estado</label>
+            <label class="check-inline"><input type="checkbox" id="colTurnoAcciones" checked onchange="aplicarConfiguracionColumnasTurnos()" /> Acciones</label>
+          </div>
+        </div>
+        <div class="stats-grid turnos-kpi-grid">
+          <div class="stat-card">
+            <span class="stat-label">No-show</span>
+            <h3 id="kpiNoShow">0%</h3>
+          </div>
+          <div class="stat-card">
+            <span class="stat-label">Confirmaci&oacute;n</span>
+            <h3 id="kpiConfirmacion">0%</h3>
+          </div>
+          <div class="stat-card">
+            <span class="stat-label">Ocupaci&oacute;n hora pico</span>
+            <h3 id="kpiOcupacionHora">--</h3>
+          </div>
+        </div>
+        <div class="dashboard-block">
+          <div class="block-head">
+            <div>
+              <h4>Timeline del d&iacute;a</h4>
+              <p class="block-subtitle">Vista cronol&oacute;gica de la jornada seleccionada.</p>
+            </div>
+          </div>
+          <div id="turnosTimelineDia" class="turnos-timeline"></div>
+        </div>
+        <div class="table-container">
+          <table class="admin-table">
+            <caption class="sr-only">Listado de turnos</caption>
+            <thead>
+              <tr>
+                <th scope="col" data-col="cliente">Cliente</th>
+                <th scope="col" data-col="servicios">Servicios</th>
+                <th scope="col" data-col="fecha">Fecha</th>
+                <th scope="col" data-col="hora">Hora</th>
+                <th scope="col" data-col="colaborador">Colaborador</th>
+                <th scope="col" data-col="estado">Estado</th>
+                <th scope="col" data-col="acciones">Acciones</th>
+              </tr>
+            </thead>
+            <tbody id="listaTurnos"></tbody>
+          </table>
+        </div>
+        <div class="pagination" id="paginacionTurnos"></div>
+      </section>
+
+      <section id="clientesSection" style="display:none;">
+        <div class="section-head">
+          <div>
+            <h3>Clientes</h3>
+            <p class="section-subtitle">Resumen de clientes y su historial de contactos.</p>
+          </div>
+        </div>
+        <div class="filters">
+          <input type="search" id="filtroClientesTexto" class="form-control" placeholder="Buscar por nombre, CI o tel&eacute;fono" oninput="actualizarListaClientes()" />
+          <select id="filtroClientesEstado" class="form-control" onchange="actualizarListaClientes()" style="max-width:200px;">
+            <option value="">Todos los estados</option>
+            <option value="pendiente">Pendientes</option>
+            <option value="confirmado">Confirmados</option>
+            <option value="cancelado">Cancelados</option>
+          </select>
+          <input type="date" id="filtroClientesDesde" class="form-control" aria-label="Desde" onchange="actualizarListaClientes()" />
+          <input type="date" id="filtroClientesHasta" class="form-control" aria-label="Hasta" onchange="actualizarListaClientes()" />
+          <input type="number" id="filtroClientesIngresoMin" class="form-control" placeholder="Ingreso m&iacute;nimo" aria-label="Ingreso mínimo" oninput="actualizarListaClientes()" />
+          <input type="number" id="filtroClientesIngresoMax" class="form-control" placeholder="Ingreso m&aacute;ximo" aria-label="Ingreso máximo" oninput="actualizarListaClientes()" />
+          <button class="btn btn-secondary" type="button" onclick="limpiarFiltrosClientes()"><i class="fas fa-xmark"></i> Limpiar</button>
+        </div>
+        <div class="table-container">
+          <table class="admin-table">
+            <caption class="sr-only">Listado de clientes</caption>
+            <thead>
+              <tr>
+                <th scope="col">Cliente</th>
+                <th scope="col">Turnos</th>
+                <th scope="col">Contactos</th>
+                <th scope="col">Ingresos</th>
+                <th scope="col">&Uacute;ltimo turno</th>
+                <th scope="col">&Uacute;ltimo contacto</th>
+                <th scope="col">Acciones</th>
+              </tr>
+            </thead>
+            <tbody id="listaClientes"></tbody>
+          </table>
+        </div>
+        <div class="pagination" id="paginacionClientes"></div>
+      </section>
+
+      <section id="colaboradoresSection" style="display:none;">
+        <div class="section-head">
+          <div>
+            <h3>Colaboradores</h3>
+            <p class="section-subtitle">Perfiles, comisiones y disponibilidad.</p>
+          </div>
+        </div>
+        <div class="dashboard-block">
+          <input type="hidden" id="colabId" />
+          <div class="grid-two">
+            <div class="form-group">
+              <label class="form-label">Nombre</label>
+              <input type="text" id="colabNombre" class="form-control" placeholder="Nombre completo" />
+            </div>
+            <div class="form-group">
+              <label class="form-label">Usuario</label>
+              <input type="text" id="colabUsername" class="form-control" placeholder="usuario" autocomplete="username" />
+            </div>
+            <div class="form-group">
+              <label class="form-label">Contraseña</label>
+              <input type="password" id="colabPassword" class="form-control" placeholder="Actualizar contraseña" autocomplete="new-password" />
+            </div>
+            <div class="form-group">
+              <label class="form-label">Comisión base (%)</label>
+              <input type="number" id="colabComision" class="form-control" min="0" max="100" step="1" placeholder="Ej: 40" />
+            </div>
+          </div>
+          <div class="grid-two">
+            <div class="form-group">
+              <label class="form-label">Teléfono</label>
+              <input type="tel" id="colabTelefono" class="form-control" placeholder="0981..." />
+            </div>
+            <div class="form-group">
+              <label class="form-label">Email</label>
+              <input type="email" id="colabEmail" class="form-control" placeholder="correo@correo.com" />
+            </div>
+            <div class="form-group">
+              <label class="form-label">Color</label>
+              <input type="color" id="colabColor" class="form-control" />
+            </div>
+            <div class="form-group">
+              <label class="form-label">Foto (URL)</label>
+              <input type="url" id="colabFoto" class="form-control" placeholder="https://..." />
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Servicios que realiza</label>
+            <div class="chips-row" id="colabServiciosList"></div>
+            <small class="form-help">Si no seleccionas, podrá tomar cualquier servicio.</small>
+          </div>
+          <div class="form-actions">
+            <button class="btn btn-primary" type="button" onclick="guardarColaborador()"><i class="fas fa-save"></i> Guardar</button>
+            <button class="btn btn-secondary" type="button" onclick="resetColaboradorForm()"><i class="fas fa-rotate-left"></i> Nuevo</button>
+            <span class="form-help" id="colabMensaje"></span>
+          </div>
+        </div>
+        <div class="table-container">
+          <table class="admin-table">
+            <caption class="sr-only">Colaboradores</caption>
+            <thead>
+              <tr>
+                <th>Colaborador</th>
+                <th>Usuario</th>
+                <th>Comisión</th>
+                <th>Servicios</th>
+                <th>Turnos asignados</th>
+                <th>Activo</th>
+                <th>Acciones</th>
+              </tr>
+            </thead>
+            <tbody id="listaColaboradores"></tbody>
+          </table>
+        </div>
+        <div class="dashboard-block">
+          <div class="section-head">
+            <div>
+              <h4>Control diario y por rango</h4>
+              <p class="section-subtitle">Busca colaboradores y revisa asignados, generado y comisiones para pago.</p>
+            </div>
+          </div>
+          <div class="filters">
+            <input type="search" id="filtroColabGestionTexto" class="form-control" placeholder="Buscar colaborador por nombre o usuario" oninput="actualizarVistaPagoColaborador()" />
+            <select id="filtroColabGestionId" class="form-control" onchange="actualizarVistaPagoColaborador()">
+              <option value="">Todos los colaboradores</option>
+            </select>
+            <select id="filtroColabGestionModo" class="form-control" onchange="actualizarVistaPagoColaborador()">
+              <option value="hoy">Solo hoy</option>
+              <option value="rango">Rango de fechas</option>
+            </select>
+            <input type="date" id="filtroColabGestionDesde" class="form-control" onchange="actualizarVistaPagoColaborador()" />
+            <input type="date" id="filtroColabGestionHasta" class="form-control" onchange="actualizarVistaPagoColaborador()" />
+            <button class="btn btn-secondary" type="button" onclick="resetFiltroPagoColaborador()"><i class="fas fa-xmark"></i> Limpiar</button>
+          </div>
+          <div class="stats-grid" id="colabGestionStats"></div>
+          <div class="table-container">
+            <table class="admin-table">
+              <caption class="sr-only">Detalle de turnos por colaborador</caption>
+              <thead>
+                <tr>
+                  <th>Colaborador</th>
+                  <th>Cliente</th>
+                  <th>Servicios</th>
+                  <th>Fecha</th>
+                  <th>Hora</th>
+                  <th>Estado</th>
+                  <th>Total</th>
+                  <th>Comisi&oacute;n</th>
+                </tr>
+              </thead>
+              <tbody id="colabGestionTurnos"></tbody>
+            </table>
+          </div>
+        </div>
+        <div class="dashboard-block" id="resumenColaboradores"></div>
+      </section>
+
+      <section id="giftcardsSection" style="display:none;">
+        <div class="section-head">
+          <div>
+            <h3>Giftcards</h3>
+            <p class="section-subtitle">Solicitudes y estados de giftcards.</p>
+          </div>
+          <select id="filtroGiftEstado" class="form-control" style="max-width:200px;" onchange="actualizarGiftcards()">
+            <option value="">Todos</option>
+            <option value="pendiente">Pendiente</option>
+            <option value="pagada">Pagada</option>
+            <option value="entregada">Entregada</option>
+            <option value="cancelado">Cancelado</option>
+          </select>
+        </div>
+        <div class="dashboard-block giftcard-validator">
+          <div class="validator-header">
+            <div>
+              <h4>Validador de giftcard</h4>
+              <p class="section-subtitle">Ingresa el código único para saber si está activa o ya fue reclamada.</p>
+            </div>
+            <div class="validator-actions">
+              <input type="text" id="giftcardValCodigo" class="form-control" placeholder="Ej: ALI123 o último código" onkeydown="if(event.key==='Enter'){validarGiftcardCodigo();}" />
+              <button class="btn btn-primary" type="button" onclick="validarGiftcardCodigo()"><i class="fas fa-check"></i> Validar</button>
+            </div>
+          </div>
+          <div id="giftcardValResultado" class="validator-result muted">Ingresa un código y presiona Validar.</div>
+        </div>
+        <div class="table-container">
+          <table class="admin-table">
+            <caption class="sr-only">Listado de giftcards</caption>
+            <thead>
+              <tr>
+                <th>Cliente</th>
+                <th>Destinatario</th>
+                <th>Monto</th>
+                <th>Servicios</th>
+                <th>Estado</th>
+                <th>Fecha</th>
+                <th>Código</th>
+                <th>Acciones</th>
+              </tr>
+            </thead>
+            <tbody id="listaGiftcards"></tbody>
+          </table>
+        </div>
+      </section>
+
+      <section id="marketingSection" style="display:none;">
+        <div class="section-head">
+          <div>
+            <h3>Marketing</h3>
+            <p class="section-subtitle">Banners promocionales y sorteos.</p>
+          </div>
+        </div>
+        <div class="grid-two">
+          <div class="dashboard-block">
+            <div class="section-head" style="margin-bottom:12px;">
+              <div>
+                <h4>Promos / Banners</h4>
+                <p class="section-subtitle">Controla el carrusel del sitio.</p>
+              </div>
+              <button class="btn btn-primary" type="button" onclick="resetBannerForm()"><i class="fas fa-plus"></i> Nuevo banner</button>
+            </div>
+            <div class="grid-two" style="margin-bottom:12px;">
+              <div class="form-group">
+                <label class="form-label">Título</label>
+                <input type="text" id="bannerTitulo" class="form-control" />
+              </div>
+              <div class="form-group">
+                <label class="form-label">Descripción</label>
+                <input type="text" id="bannerDescripcion" class="form-control" />
+              </div>
+              <div class="form-group">
+                <label class="form-label">Imagen (URL)</label>
+                <input type="url" id="bannerImagen" class="form-control" placeholder="https://..." />
+              </div>
+              <div class="form-group">
+                <label class="form-label">Link (opcional)</label>
+                <input type="url" id="bannerUrl" class="form-control" placeholder="https://..." />
+              </div>
+              <div class="form-group">
+                <label class="form-label">Orden</label>
+                <input type="number" id="bannerOrden" class="form-control" min="0" />
+              </div>
+              <div class="form-group">
+                <label class="form-label">Estado</label>
+                <select id="bannerActivo" class="form-control">
+                  <option value="1">Activo</option>
+                  <option value="0">Inactivo</option>
+                </select>
+              </div>
+              <input type="hidden" id="bannerId" />
+            </div>
+            <div class="form-actions" style="margin-bottom:10px;">
+              <button class="btn btn-primary" type="button" onclick="guardarBanner()"><i class="fas fa-save"></i> Guardar</button>
+              <span class="form-help" id="bannerMensaje"></span>
+            </div>
+            <div class="table-container">
+              <table class="admin-table">
+                <thead>
+                  <tr>
+                    <th>Título</th>
+                    <th>Estado</th>
+                    <th>Orden</th>
+                    <th>Acciones</th>
+                  </tr>
+                </thead>
+                <tbody id="listaBanners"></tbody>
+              </table>
+            </div>
+
+            <div class="section-head" style="margin:16px 0 8px;">
+              <div>
+                <h4>Mosaicos Hero (3)</h4>
+                <p class="section-subtitle">Publicidad y promociones que aparecen en los 3 mosaicos del inicio.</p>
+              </div>
+            </div>
+            <div class="mosaic-admin-grid">
+              <article class="mosaic-admin-card">
+                <h5>Mosaico principal</h5>
+                <div class="form-group">
+                  <label class="form-label">Título</label>
+                  <input type="text" id="mosaicTitulo0" class="form-control" maxlength="80" oninput="actualizarPreviewMosaico(0)" />
+                </div>
+                <div class="form-group">
+                  <label class="form-label">Descripción</label>
+                  <input type="text" id="mosaicDescripcion0" class="form-control" maxlength="160" />
+                </div>
+                <input type="hidden" id="mosaicUrl0" value="" />
+                <input type="hidden" id="mosaicImagen0" value="" />
+                <textarea id="mosaicImagenes0" hidden></textarea>
+                <small class="form-help">Carga imágenes desde archivos. Cada carga reemplaza el carrusel principal.</small>
+                <div class="form-group">
+                  <label class="form-label">Subir varias imágenes</label>
+                  <input type="file" id="mosaicImagenFile0" class="form-control" accept="image/*" multiple onchange="subirImagenesMosaicoPrincipal(this)" />
+                </div>
+                <label class="check-inline">
+                  <input type="checkbox" id="mosaicActivo0" checked />
+                  Activo
+                </label>
+                <div class="mosaic-preview" id="mosaicPreview0"><span>Sin imagen</span></div>
+              </article>
+
+              <article class="mosaic-admin-card">
+                <h5>Mosaico secundario 1</h5>
+                <div class="form-group">
+                  <label class="form-label">Título</label>
+                  <input type="text" id="mosaicTitulo1" class="form-control" maxlength="80" oninput="actualizarPreviewMosaico(1)" />
+                </div>
+                <div class="form-group">
+                  <label class="form-label">Descripción</label>
+                  <input type="text" id="mosaicDescripcion1" class="form-control" maxlength="160" />
+                </div>
+                <input type="hidden" id="mosaicUrl1" value="" />
+                <input type="hidden" id="mosaicImagen1" value="" />
+                <div class="form-group">
+                  <label class="form-label">Subir imagen</label>
+                  <input type="file" id="mosaicImagenFile1" class="form-control" accept="image/*" onchange="subirImagenMosaico(1, this)" />
+                </div>
+                <label class="check-inline">
+                  <input type="checkbox" id="mosaicActivo1" checked />
+                  Activo
+                </label>
+                <div class="mosaic-preview" id="mosaicPreview1"><span>Sin imagen</span></div>
+              </article>
+
+              <article class="mosaic-admin-card">
+                <h5>Mosaico secundario 2</h5>
+                <div class="form-group">
+                  <label class="form-label">Título</label>
+                  <input type="text" id="mosaicTitulo2" class="form-control" maxlength="80" oninput="actualizarPreviewMosaico(2)" />
+                </div>
+                <div class="form-group">
+                  <label class="form-label">Descripción</label>
+                  <input type="text" id="mosaicDescripcion2" class="form-control" maxlength="160" />
+                </div>
+                <input type="hidden" id="mosaicUrl2" value="" />
+                <input type="hidden" id="mosaicImagen2" value="" />
+                <div class="form-group">
+                  <label class="form-label">Subir imagen</label>
+                  <input type="file" id="mosaicImagenFile2" class="form-control" accept="image/*" onchange="subirImagenMosaico(2, this)" />
+                </div>
+                <label class="check-inline">
+                  <input type="checkbox" id="mosaicActivo2" checked />
+                  Activo
+                </label>
+                <div class="mosaic-preview" id="mosaicPreview2"><span>Sin imagen</span></div>
+              </article>
+            </div>
+            <div class="form-actions" style="margin-top:10px;">
+              <button class="btn btn-primary" type="button" onclick="guardarHeroMosaicAdmin()"><i class="fas fa-image"></i> Guardar mosaicos</button>
+              <span class="form-help" id="mosaicMensaje"></span>
+            </div>
+          </div>
+          <div class="dashboard-block">
+            <div class="section-head" style="margin-bottom:12px;">
+              <div>
+                <h4>Sorteos</h4>
+                <p class="section-subtitle">Elige ganadores entre clientes.</p>
+              </div>
+            </div>
+            <div class="grid-two">
+              <div class="form-group">
+                <label class="form-label">Título</label>
+                <input type="text" id="sorteoTitulo" class="form-control" placeholder="Sorteo mensual" />
+              </div>
+              <div class="form-group">
+                <label class="form-label">Ganadores</label>
+                <input type="number" id="sorteoGanadores" class="form-control" min="1" max="50" value="1" />
+              </div>
+              <div class="form-group">
+                <label class="form-label">Desde</label>
+                <input type="date" id="sorteoDesde" class="form-control" />
+              </div>
+              <div class="form-group">
+                <label class="form-label">Hasta</label>
+                <input type="date" id="sorteoHasta" class="form-control" />
+              </div>
+            </div>
+            <div class="form-actions">
+              <button class="btn btn-primary" type="button" onclick="ejecutarSorteo()"><i class="fas fa-random"></i> Ejecutar sorteo</button>
+              <span class="form-help" id="sorteoMensaje"></span>
+            </div>
+            <div class="table-container" style="margin-top:12px;">
+              <table class="admin-table">
+                <thead>
+                  <tr>
+                    <th>Sorteo</th>
+                    <th>Ganadores</th>
+                    <th>Fecha</th>
+                  </tr>
+                </thead>
+                <tbody id="listaSorteos"></tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="calendarioSection" style="display:none;">
+        <div class="section-head">
+          <div>
+            <h3>Calendario</h3>
+            <p class="section-subtitle">Vista mensual con turnos confirmados.</p>
+          </div>
+          <div class="calendar-nav">
+            <button class="btn btn-secondary" onclick="cambiarMes(-1)"><i class="fas fa-chevron-left"></i></button>
+            <span id="mesActual"></span>
+            <button class="btn btn-secondary" onclick="cambiarMes(1)"><i class="fas fa-chevron-right"></i></button>
+          </div>
+        </div>
+        <div class="calendar-card" id="calendario"></div>
+      </section>
+
+      <section id="reportesSection" style="display:none;">
+        <div class="section-head">
+          <div>
+            <h3>Reportes</h3>
+            <p class="section-subtitle">Exporta todos los datos y genera PDFs con gr&aacute;ficos.</p>
+          </div>
+          <div class="header-actions">
+            <button class="btn btn-secondary" onclick="exportarCSV('turnos')"><i class="fas fa-file-csv"></i> CSV Turnos</button>
+            <button class="btn btn-secondary" onclick="exportarExcel('turnos')"><i class="fas fa-file-excel"></i> Excel Turnos</button>
+            <button class="btn btn-secondary" onclick="exportarCSV('clientes')"><i class="fas fa-file-csv"></i> CSV Clientes</button>
+            <button class="btn btn-secondary" onclick="exportarExcel('clientes')"><i class="fas fa-file-excel"></i> Excel Clientes</button>
+            <button class="btn btn-secondary" onclick="exportarCSV('colaboradores')"><i class="fas fa-file-csv"></i> CSV Colaboradores</button>
+            <button class="btn btn-secondary" onclick="exportarExcel('colaboradores')"><i class="fas fa-file-excel"></i> Excel Colaboradores</button>
+            <button class="btn btn-secondary" onclick="exportarCSV('servicios')"><i class="fas fa-file-csv"></i> CSV Servicios</button>
+            <button class="btn btn-secondary" onclick="exportarExcel('servicios')"><i class="fas fa-file-excel"></i> Excel Servicios</button>
+            <button class="btn btn-secondary" onclick="exportarCSV('lookbook')"><i class="fas fa-file-csv"></i> CSV Lookbook</button>
+            <button class="btn btn-secondary" onclick="exportarExcel('lookbook')"><i class="fas fa-file-excel"></i> Excel Lookbook</button>
+            <button class="btn btn-primary" onclick="imprimirReportePDF()"><i class="fas fa-file-pdf"></i> PDF con gr&aacute;ficos</button>
+          </div>
+        </div>
+        <div class="filters">
+          <input type="date" id="reporteDesde" class="form-control" aria-label="Desde" />
+          <input type="date" id="reporteHasta" class="form-control" aria-label="Hasta" />
+          <button class="btn btn-secondary" type="button" onclick="actualizarReporte()"><i class="fas fa-rotate"></i> Actualizar</button>
+          <label class="check-inline"><input type="checkbox" id="reporteUsarRango" checked /> Usar rango en exportaciones</label>
+        </div>
+
+        <div id="reporteContenido" class="reporte-grid">
+          <div class="stat-card">
+            <span class="stat-label">Turnos</span>
+            <h3 id="reporteTotalTurnos">0</h3>
+          </div>
+          <div class="stat-card">
+            <span class="stat-label">Ingresos</span>
+            <h3 id="reporteTotalIngresos">0 Gs</h3>
+          </div>
+          <div class="stat-card">
+            <span class="stat-label">Clientes &uacute;nicos</span>
+            <h3 id="reporteTotalClientes">0</h3>
+          </div>
+          <div class="stat-card">
+            <span class="stat-label">Promedio por turno</span>
+            <h3 id="reportePromedio">0 Gs</h3>
+          </div>
+
+          <div class="insight-card chart-card">
+            <h4>Turnos por d&iacute;a</h4>
+            <canvas id="reporteTurnosChart"></canvas>
+          </div>
+          <div class="insight-card chart-card">
+            <h4>Ingresos por d&iacute;a</h4>
+            <canvas id="reporteIngresosChart"></canvas>
+          </div>
+          <div class="insight-card">
+            <h4>Top servicios</h4>
+            <ul id="reporteTopServicios"></ul>
+          </div>
+          <div class="insight-card">
+            <h4>Top clientes</h4>
+            <ul id="reporteTopClientes"></ul>
+          </div>
+          <div class="insight-card">
+            <h4>Top colaboradores</h4>
+            <ul id="reporteTopColaboradores"></ul>
+          </div>
+
+          <div class="table-container reporte-tabla">
+            <table class="admin-table">
+              <caption class="sr-only">Resumen de turnos</caption>
+              <thead>
+                <tr>
+                  <th scope="col">Cliente</th>
+                  <th scope="col">Servicios</th>
+                  <th scope="col">Fecha</th>
+                  <th scope="col">Hora</th>
+                  <th scope="col">Estado</th>
+                  <th scope="col">Precio</th>
+                </tr>
+              </thead>
+              <tbody id="reporteTablaTurnos"></tbody>
+            </table>
+          </div>
+          <div class="table-container reporte-tabla">
+            <table class="admin-table">
+              <caption class="sr-only">Resumen de colaboradores</caption>
+              <thead>
+                <tr>
+                  <th scope="col">Colaborador</th>
+                  <th scope="col">Turnos</th>
+                  <th scope="col">Ingresos</th>
+                  <th scope="col">Comisión</th>
+                  <th scope="col">% Comisión</th>
+                </tr>
+              </thead>
+              <tbody id="reporteTablaColaboradores"></tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <section id="configSection" style="display:none;">
+        <div class="section-head">
+          <div>
+            <h3>Configuraci&oacute;n</h3>
+            <p class="section-subtitle">Ajustes generales del negocio.</p>
+          </div>
+        </div>
+        <div class="config-grid">
+          <div class="config-card">
+            <h4>Horario comercial</h4>
+            <p class="section-subtitle">Define horario base y variaciones por día.</p>
+            <label class="form-label" for="horaApertura">Hora de apertura</label>
+            <input type="time" id="horaApertura" class="form-control" value="09:00" />
+            <label class="form-label" for="horaCierre">Hora de cierre</label>
+            <input type="time" id="horaCierre" class="form-control" value="19:00" />
+            <label class="form-label" for="intervaloTurnos">Intervalo de horarios (minutos)</label>
+            <input type="number" id="intervaloTurnos" class="form-control" value="30" min="5" max="120" step="5" />
+            <small>Ejemplo: 30 muestra 08:00, 08:30, 09:00...</small>
+            <div class="config-subgrid">
+              <div>
+                <label class="check-inline"><input type="checkbox" id="horarioLunVieActivo" checked /> Lunes a viernes</label>
+                <div class="grid-two">
+                  <input type="time" id="horarioLunVieApertura" class="form-control" value="09:00" />
+                  <input type="time" id="horarioLunVieCierre" class="form-control" value="19:00" />
+                </div>
+              </div>
+              <div>
+                <label class="check-inline"><input type="checkbox" id="horarioSabActivo" checked /> Sábado</label>
+                <div class="grid-two">
+                  <input type="time" id="horarioSabApertura" class="form-control" value="09:00" />
+                  <input type="time" id="horarioSabCierre" class="form-control" value="19:00" />
+                </div>
+              </div>
+              <div>
+                <label class="check-inline"><input type="checkbox" id="horarioDomActivo" /> Domingo</label>
+                <div class="grid-two">
+                  <input type="time" id="horarioDomApertura" class="form-control" value="09:00" />
+                  <input type="time" id="horarioDomCierre" class="form-control" value="19:00" />
+                </div>
+              </div>
+            </div>
+            <button class="btn btn-primary" onclick="guardarHorario()">Guardar</button>
+          </div>
+          <div class="config-card">
+            <h4>Bloqueos de agenda</h4>
+            <p class="section-subtitle">Pausa almuerzo, feriados y eventos internos.</p>
+            <label class="form-label" for="bloqueoFecha">Fecha</label>
+            <input type="date" id="bloqueoFecha" class="form-control" />
+            <div class="grid-two">
+              <div>
+                <label class="form-label" for="bloqueoDesde">Desde</label>
+                <input type="time" id="bloqueoDesde" class="form-control" />
+              </div>
+              <div>
+                <label class="form-label" for="bloqueoHasta">Hasta</label>
+                <input type="time" id="bloqueoHasta" class="form-control" />
+              </div>
+            </div>
+            <label class="form-label" for="bloqueoMotivo">Motivo</label>
+            <input type="text" id="bloqueoMotivo" class="form-control" placeholder="Ej: Almuerzo / Feriado / Evento" />
+            <div class="header-actions">
+              <button class="btn btn-secondary" type="button" onclick="agregarBloqueoAgenda()"><i class="fas fa-plus"></i> Agregar bloqueo</button>
+              <button class="btn btn-primary" type="button" onclick="guardarConfiguracionAdmin()">Guardar</button>
+            </div>
+            <div id="listaBloqueosAgenda" class="timeline"></div>
+          </div>
+          <div class="config-card">
+            <h4>Alerta de pendientes</h4>
+            <label class="form-label" for="pendientesAlerta">Umbral de alerta</label>
+            <input type="number" id="pendientesAlerta" class="form-control" min="1" value="10" />
+            <small>Mostrar alerta cuando pendientes superen este valor</small>
+            <button class="btn btn-primary" onclick="guardarConfiguracionAdmin()">Guardar</button>
+          </div>
+          <div class="config-card">
+            <h4>WhatsApp</h4>
+            <label class="form-label" for="whatsappNumber">N&uacute;mero de WhatsApp</label>
+            <input type="text" id="whatsappNumber" class="form-control" placeholder="595981234567" />
+            <small>Formato: 595 + n&uacute;mero sin 0</small>
+            <label class="form-label" for="tplConfirmacion">Plantilla confirmaci&oacute;n</label>
+            <textarea id="tplConfirmacion" class="form-control" rows="2" placeholder="Usa {nombre}, {fecha}, {hora}, {servicios}"></textarea>
+            <label class="form-label" for="tplRecordatorio">Plantilla recordatorio</label>
+            <textarea id="tplRecordatorio" class="form-control" rows="2" placeholder="Usa {nombre}, {fecha}, {hora}, {servicios}"></textarea>
+            <label class="form-label" for="tplReprogramacion">Plantilla reprogramaci&oacute;n</label>
+            <textarea id="tplReprogramacion" class="form-control" rows="2" placeholder="Usa {nombre}, {fecha}, {hora}, {servicios}"></textarea>
+            <button class="btn btn-primary" onclick="guardarWhatsApp()">Actualizar</button>
+          </div>
+          <div class="config-card">
+            <h4>Metas colaboradores</h4>
+            <label class="form-label" for="metaComisionSemanal">Meta comisi&oacute;n semanal (Gs)</label>
+            <input type="number" id="metaComisionSemanal" class="form-control" min="0" step="1000" value="0" />
+            <label class="form-label" for="metaComisionMensual">Meta comisi&oacute;n mensual (Gs)</label>
+            <input type="number" id="metaComisionMensual" class="form-control" min="0" step="1000" value="0" />
+            <button class="btn btn-primary" onclick="guardarConfiguracionAdmin()">Guardar</button>
+          </div>
+          <div class="config-card">
+            <h4>Ubicación y mapa</h4>
+            <label class="form-label" for="ubicacionCiudad">Ciudad</label>
+            <input type="text" id="ubicacionCiudad" class="form-control" placeholder="Asunción, Paraguay" />
+            <label class="form-label" for="ubicacionDireccion">Dirección</label>
+            <input type="text" id="ubicacionDireccion" class="form-control" placeholder="Barrio / calle" />
+            <label class="form-label" for="mapEmbedUrl">URL mapa (embed)</label>
+            <input type="text" id="mapEmbedUrl" class="form-control" placeholder="https://www.openstreetmap.org/export/embed.html?..." />
+            <label class="form-label" for="mapUrl">URL mapa (link)</label>
+            <input type="text" id="mapUrl" class="form-control" placeholder="https://www.openstreetmap.org/?..." />
+            <button class="btn btn-primary" onclick="guardarConfiguracionAdmin()">Guardar</button>
+          </div>
+          <div class="config-card">
+            <h4>Redes sociales</h4>
+            <label class="form-label" for="instagramUrl">Instagram</label>
+            <input type="url" id="instagramUrl" class="form-control" placeholder="https://instagram.com/tu-cuenta" />
+            <label class="form-label" for="facebookUrl">Facebook</label>
+            <input type="url" id="facebookUrl" class="form-control" placeholder="https://facebook.com/tu-pagina" />
+            <label class="form-label" for="tiktokUrl">TikTok</label>
+            <input type="url" id="tiktokUrl" class="form-control" placeholder="https://tiktok.com/@tu-cuenta" />
+            <button class="btn btn-primary" onclick="guardarConfiguracionAdmin()">Guardar</button>
+          </div>
+          <div class="config-card">
+            <h4>Giftcards</h4>
+            <label class="form-label" for="giftMontosConfig">Montos sugeridos (separados por coma)</label>
+            <input type="text" id="giftMontosConfig" class="form-control" placeholder="100000,200000,300000" />
+            <label class="form-label" for="giftMensajeConfig">Mensaje</label>
+            <input type="text" id="giftMensajeConfig" class="form-control" placeholder="Texto breve para la sección de giftcards" />
+            <button class="btn btn-primary" onclick="guardarConfiguracionAdmin()">Guardar</button>
+          </div>
+          <div class="config-card">
+            <h4>Datos bancarios</h4>
+            <label class="form-label" for="bankNombre">Banco</label>
+            <input type="text" id="bankNombreConfig" class="form-control" placeholder="Nombre del banco" />
+            <label class="form-label" for="bankTitular">Titular</label>
+            <input type="text" id="bankTitularConfig" class="form-control" placeholder="Titular" />
+            <label class="form-label" for="bankCuenta">Cuenta</label>
+            <input type="text" id="bankCuentaConfig" class="form-control" placeholder="Nro de cuenta" />
+            <label class="form-label" for="bankAlias">Alias</label>
+            <input type="text" id="bankAliasConfig" class="form-control" placeholder="Alias" />
+            <label class="form-label" for="bankQrConfig">QR (URL)</label>
+            <input type="url" id="bankQrConfig" class="form-control" placeholder="https://..." />
+            <button class="btn btn-primary" onclick="guardarConfiguracionAdmin()">Guardar</button>
+          </div>
+          <div class="config-card">
+            <h4>Backups automáticos</h4>
+            <p style="color: var(--muted);">Se guardan cada 6 horas. Conservamos los últimos 30.</p>
+            <button class="btn btn-secondary" onclick="cargarBackups()"><i class="fas fa-rotate"></i> Actualizar</button>
+            <div id="backupList" style="margin-top: 10px;"></div>
+          </div>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <div class="modal-overlay" id="modalServicio" role="dialog" aria-modal="true" aria-labelledby="modalTituloServicio" aria-hidden="true">
+    <div class="modal">
+      <div class="modal-header">
+        <h3 id="modalTituloServicio">Nuevo servicio</h3>
+        <button class="close-modal" onclick="cerrarModalServicio()" aria-label="Cerrar">&times;</button>
+      </div>
+      <div class="modal-content">
+        <label class="form-label" for="inputNombreServicio">Nombre</label>
+        <input type="text" id="inputNombreServicio" class="form-control" />
+        <label class="form-label" for="inputDescripcionServicio">Descripci&oacute;n</label>
+        <textarea id="inputDescripcionServicio" class="form-control" rows="3"></textarea>
+        <div class="grid-two">
+          <div>
+            <label class="form-label" for="inputDuracionServicio">Duraci&oacute;n (minutos)</label>
+            <input type="number" id="inputDuracionServicio" class="form-control" value="60" />
+          </div>
+          <div>
+            <label class="form-label" for="inputPrecioServicio">Precio (Gs)</label>
+            <input type="number" id="inputPrecioServicio" class="form-control" value="100000" />
+          </div>
+          <div>
+            <label class="form-label" for="inputComisionServicio">% para colaborador</label>
+            <input type="number" id="inputComisionServicio" class="form-control" value="40" min="0" max="100" />
+          </div>
+        </div>
+        <label class="form-label" for="inputCategoriaServicio">Categor&iacute;a</label>
+        <select id="inputCategoriaServicio" class="form-control">
+          <option value="corte">Corte</option>
+          <option value="color">Coloraci&oacute;n</option>
+          <option value="tratamiento">Tratamiento</option>
+          <option value="peinado">Peinado</option>
+          <option value="maquillaje">Maquillaje</option>
+        </select>
+        <div style="display:flex; align-items:center; gap:10px; margin-top:8px;">
+          <input type="checkbox" id="inputActivoServicio" checked />
+          <label for="inputActivoServicio">Activo</label>
+        </div>
+        <label class="form-label" for="inputImagenServicio">Im&aacute;genes (URLs o subir)</label>
+        <div class="image-input-row">
+          <input type="text" id="inputImagenServicio" class="form-control" placeholder="https://... , https://..." />
+          <button class="btn btn-secondary" type="button" onclick="agregarImagenServicioDesdeInput()">Agregar</button>
+        </div>
+        <input type="file" id="fileImagenServicio" class="form-control" accept="image/*" multiple onchange="previsualizarImagenServicio(this)" />
+        <div id="previewImagenServicio" class="image-grid" style="margin-top:10px;"></div>
+        <small class="form-help">Puedes subir varias fotos. La primera ser&aacute; la portada del servicio.</small>
+        <div style="display:flex; gap:10px; margin-top:20px;">
+          <button class="btn btn-primary" onclick="guardarServicio()">Guardar</button>
+          <button class="btn btn-secondary" onclick="cerrarModalServicio()">Cancelar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal-overlay" id="modalContacto" role="dialog" aria-modal="true" aria-labelledby="modalTituloContacto" aria-hidden="true">
+    <div class="modal">
+      <div class="modal-header">
+        <h3 id="modalTituloContacto">Enviar mensaje</h3>
+        <button class="close-modal" onclick="cerrarModalContacto()" aria-label="Cerrar">&times;</button>
+      </div>
+      <div class="modal-content">
+        <label class="form-label" for="contactoCliente">Cliente</label>
+        <input type="text" id="contactoCliente" class="form-control" readonly />
+        <label class="form-label" for="contactoTelefono">Tel&eacute;fono</label>
+        <input type="text" id="contactoTelefono" class="form-control" readonly />
+        <label class="form-label" for="contactoServicio">Servicios y fecha</label>
+        <input type="text" id="contactoServicio" class="form-control" readonly />
+        <label class="form-label" for="contactoMensaje">Mensaje</label>
+        <textarea id="contactoMensaje" class="form-control" rows="5"></textarea>
+        <div style="display:flex; gap:10px; margin-top:20px;">
+          <button class="btn btn-primary" onclick="enviarMensajePersonalizado()">Enviar</button>
+          <button class="btn btn-secondary" onclick="cerrarModalContacto()">Cancelar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal-overlay" id="modalLookbook" role="dialog" aria-modal="true" aria-labelledby="modalTituloLookbook" aria-hidden="true">
+    <div class="modal">
+      <div class="modal-header">
+        <h3 id="modalTituloLookbook">Nuevo lookbook</h3>
+        <button class="close-modal" onclick="cerrarModalLookbook()" aria-label="Cerrar">&times;</button>
+      </div>
+      <div class="modal-content">
+        <label class="form-label" for="inputTituloLookbook">T&iacute;tulo</label>
+        <input type="text" id="inputTituloLookbook" class="form-control" />
+        <label class="form-label" for="inputDescripcionLookbook">Descripci&oacute;n</label>
+        <textarea id="inputDescripcionLookbook" class="form-control" rows="3"></textarea>
+        <div class="grid-two">
+          <div>
+            <label class="form-label" for="inputOrdenLookbook">Orden</label>
+            <input type="number" id="inputOrdenLookbook" class="form-control" value="1" />
+          </div>
+          <div style="display:flex; align-items:center; gap:10px; margin-top:26px;">
+            <input type="checkbox" id="inputActivoLookbook" checked />
+            <label for="inputActivoLookbook">Activo</label>
+          </div>
+        </div>
+        <label class="form-label" for="inputImagenLookbook">Imagen (URL o subir)</label>
+        <input type="text" id="inputImagenLookbook" class="form-control" placeholder="https://..." />
+        <input type="file" id="fileImagenLookbook" class="form-control" accept="image/*" onchange="previsualizarImagenLookbook(this)" />
+        <div id="previewImagenLookbook" style="margin-top:10px;"></div>
+        <div style="display:flex; gap:10px; margin-top:20px;">
+          <button class="btn btn-primary" onclick="guardarLookbook()">Guardar</button>
+          <button class="btn btn-secondary" onclick="cerrarModalLookbook()">Cancelar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal-overlay" id="modalGiftcardVisual" role="dialog" aria-modal="true" aria-labelledby="modalTituloGiftcard" aria-hidden="true">
+    <div class="modal modal-wide">
+      <div class="modal-header">
+        <h3 id="modalTituloGiftcard">Giftcard</h3>
+        <button class="close-modal" onclick="cerrarModalGiftcardVisual()" aria-label="Cerrar">&times;</button>
+      </div>
+      <div class="modal-content">
+        <div id="giftcardPreview" class="giftcard-preview"></div>
+        <div class="modal-actions">
+          <button class="btn btn-primary" type="button" onclick="descargarGiftcardPNG()"><i class="fas fa-download"></i> Descargar PNG</button>
+          <button class="btn btn-secondary" type="button" onclick="copiarGiftcardHTML()"><i class="fas fa-copy"></i> Copiar HTML</button>
+          <button class="btn btn-secondary" type="button" onclick="imprimirGiftcard()"><i class="fas fa-print"></i> Imprimir</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal-overlay" id="modalCliente" role="dialog" aria-modal="true" aria-labelledby="modalTituloCliente" aria-hidden="true">
+    <div class="modal modal-wide">
+      <div class="modal-header">
+        <h3 id="modalTituloCliente">Detalle del cliente</h3>
+        <button class="close-modal" onclick="cerrarModalCliente()" aria-label="Cerrar">&times;</button>
+      </div>
+      <div class="modal-content">
+        <div id="clienteDetalle" class="summary-card"></div>
+        <div class="grid-two">
+          <div class="insight-card">
+            <h4>Historial de contactos</h4>
+            <div id="clienteHistorial" class="timeline"></div>
+          </div>
+          <div class="insight-card">
+            <h4>Turnos del cliente</h4>
+            <div id="clienteTurnos" class="timeline"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal-overlay" id="modalTurno" role="dialog" aria-modal="true" aria-labelledby="modalTituloTurno" aria-hidden="true">
+    <div class="modal modal-wide">
+      <div class="modal-header">
+        <h3 id="modalTituloTurno">Nuevo turno</h3>
+        <button class="close-modal" onclick="cerrarModalTurno()" aria-label="Cerrar">&times;</button>
+      </div>
+      <div class="modal-content">
+        <div id="turnoError" class="inline-alert" style="display:none;"></div>
+        <div class="grid-two">
+          <div class="form-group">
+            <label class="form-label" for="inputNombreTurno">Cliente</label>
+            <input type="text" id="inputNombreTurno" class="form-control" placeholder="Nombre y apellido" />
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="inputCiTurno">CI</label>
+            <input type="text" id="inputCiTurno" class="form-control" placeholder="1234567" />
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="inputTelefonoTurno">Tel&eacute;fono</label>
+            <input type="text" id="inputTelefonoTurno" class="form-control" placeholder="595981234567" />
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="inputEstadoTurno">Estado</label>
+            <select id="inputEstadoTurno" class="form-control">
+              <option value="pendiente">Pendiente</option>
+              <option value="confirmado">Confirmado</option>
+              <option value="en_camino">En camino</option>
+              <option value="en_servicio">En servicio</option>
+              <option value="no_show">No-show</option>
+              <option value="finalizado">Finalizado</option>
+              <option value="cancelado">Cancelado</option>
+              <option value="en_progreso">En progreso (legado)</option>
+              <option value="completado">Completado (legado)</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="inputFechaTurno">Fecha</label>
+            <input type="date" id="inputFechaTurno" class="form-control" onchange="cargarDisponibilidadTurno()" />
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="inputHoraTurno">Hora</label>
+            <input type="time" id="inputHoraTurno" class="form-control" onchange="actualizarHorarioSeleccionado()" />
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="inputColaboradorTurno">Colaborador</label>
+            <select id="inputColaboradorTurno" class="form-control"></select>
+          </div>
+          <div class="form-group">
+            <label class="check-inline">
+              <input type="checkbox" id="inputSobreturnoTurno" />
+              Permitir sobreturno manual si hay conflicto
+            </label>
+            <input type="text" id="inputSobreturnoMotivo" class="form-control" placeholder="Motivo del sobreturno (opcional)" />
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label">Servicios</label>
+          <div id="turnoServiciosList" class="service-checklist"></div>
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="inputNotaInternaTurno">Nota interna</label>
+          <textarea id="inputNotaInternaTurno" class="form-control" rows="2" placeholder="Detalle interno para equipo/admin"></textarea>
+        </div>
+
+        <div class="grid-two">
+          <div class="summary-card" id="turnoResumen"></div>
+          <div class="form-group">
+            <label class="form-label">Horarios disponibles</label>
+            <div id="turnoHorarios" class="suggestions"></div>
+            <small class="form-help">Selecciona un horario sugerido o ingresa uno manualmente.</small>
+          </div>
+        </div>
+
+        <div style="display:flex; gap:10px; margin-top:20px;">
+          <button class="btn btn-primary" onclick="guardarTurno()">Guardar</button>
+          <button class="btn btn-secondary" onclick="cerrarModalTurno()">Cancelar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div id="notificationRegion" class="notification-region" aria-live="polite" aria-atomic="true"></div>
+
+  <script src="admin.js"></script>
+</body>
+</html>
+

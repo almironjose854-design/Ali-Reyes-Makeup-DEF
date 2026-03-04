@@ -1,0 +1,158 @@
+﻿<!DOCTYPE html>
+
+<html lang="es">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Login - Admin Ali Reyes</title>
+
+<link rel="stylesheet" href="styles.css">
+
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Manrope:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+</head>
+
+<body class="login-body">
+
+<div class="login-card">
+
+<div class="login-logo">
+
+<i class="fas fa-crown"></i>
+
+<h1>Ali Reyes MakeUp</h1>
+
+</div>
+
+<h2 class="login-title">Panel de Administración</h2>
+
+<div class="alert login-error" id="errorMessage">
+
+<i class="fas fa-exclamation-triangle"></i>
+
+<span id="errorText"></span>
+
+</div>
+
+<div class="form-group">
+
+<label class="form-label" for="username">Usuario</label>
+
+<input type="text" id="username" class="form-control" placeholder="admin" autocomplete="username" required>
+
+</div>
+
+<div class="form-group">
+
+<label class="form-label">Contraseña</label>
+
+<input type="password" id="password" class="form-control" placeholder="Tu contraseña">
+
+</div>
+
+<button class="btn btn-gold btn-block" onclick="login()">
+
+<i class="fas fa-sign-in-alt"></i> Iniciar Sesión
+
+</button>
+
+<div class="back-link">
+
+<a href="/">
+
+<i class="fas fa-arrow-left"></i> Volver al sitio principal
+
+</a>
+
+</div>
+
+</div>
+
+<script>
+
+async function login() {
+
+const username = document.getElementById('username').value;
+
+const password = document.getElementById('password').value;
+
+const errorElement = document.getElementById('errorMessage');
+
+const errorText = document.getElementById('errorText');
+
+if (!username || !password) {
+
+errorText.textContent = 'Por favor completa ambos campos';
+
+errorElement.style.display = 'block';
+
+return;
+
+}
+
+try {
+
+const response = await fetch('/api/login', {
+
+method: 'POST',
+
+headers: {
+
+'Content-Type': 'application/json'
+
+},
+
+body: JSON.stringify({ username, password })
+
+});
+
+const data = await response.json();
+
+if (data.success) {
+
+const destino = data.role === 'colaborador' ? '/colaborador' : '/admin';
+window.location.href = destino;
+
+} else {
+
+errorText.textContent = data.error || 'Credenciales incorrectas';
+
+errorElement.style.display = 'block';
+
+}
+
+} catch (error) {
+
+errorText.textContent = 'Error de conexión. Intenta nuevamente.';
+
+errorElement.style.display = 'block';
+
+console.error('Login error:', error);
+
+}
+
+}
+
+// Permitir login con Enter
+
+document.addEventListener('keypress', function(e) {
+
+if (e.key === 'Enter') {
+
+login();
+
+}
+
+});
+
+</script>
+
+</body>
+
+</html>
