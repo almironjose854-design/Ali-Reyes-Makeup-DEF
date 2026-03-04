@@ -1,0 +1,46 @@
+[
+  {
+    "id": "g-1771263496640",
+    "clienteNombre": "Sandra",
+    "telefono": "0981323438",
+    "destinatario": "Isabella",
+    "monto": 300000,
+    "servicios": [
+      {
+        "id": "1770916357216",
+        "nombre": "CORTE",
+        "precio": 120000,
+        "duracion": 60
+      }
+    ],
+    "mensaje": "PARA ISA3",
+    "estado": "entregada",
+    "banco": {
+      "banco": "Banco a definir",
+      "titular": "Ali Reyes",
+      "cuenta": "0000-0000-0000",
+      "alias": "ALI.REYES",
+      "qrUrl": ""
+    },
+    "comprobante": "",
+    "creado": "2026-02-16T17:38:16.640Z",
+    "medioPago": "transferencia",
+    "estadoHistorial": [
+      {
+        "estado": "pendiente",
+        "fecha": "2026-02-16T17:38:16.640Z"
+      },
+      {
+        "estado": "pagada",
+        "fecha": "2026-02-16T17:38:27.876Z"
+      },
+      {
+        "estado": "entregada",
+        "fecha": "2026-02-16T18:11:13.116Z"
+      }
+    ],
+    "fechaPago": "2026-02-16T17:38:27.876Z",
+    "actualizado": "2026-02-16T18:11:13.116Z",
+    "fechaEntrega": "2026-02-16T18:11:13.116Z"
+  }
+]

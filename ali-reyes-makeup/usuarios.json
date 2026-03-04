@@ -1,0 +1,52 @@
+[
+  {
+    "id": "1",
+    "username": "admin",
+    "password": "pbkdf2$120000$9324bf2d89e5537074a8fe53f8452dca$1260647609da5af8c86a24be0868be754dc155ba2a2b2443599664baf5a1e68b",
+    "nombre": "Administrador",
+    "email": "admin@alireyes.com",
+    "telefono": "+595981234567",
+    "rol": "admin",
+    "activo": true,
+    "creado": "2024-01-01T00:00:00.000Z",
+    "ultimo_acceso": "2026-02-27T19:03:02.217Z"
+  },
+  {
+    "id": "1771011132105",
+    "nombre": "Sandra Cabrera",
+    "username": "Scabrera",
+    "password": "pbkdf2$120000$dcdba663facb7a61db3fa90c49c346f0$95885e22c09c97ef0fb2434f054c0c1289673b45e8c421d077192ebf5cf48054",
+    "rol": "colaborador",
+    "telefono": "09989898",
+    "email": "kdjkajdkja@gmail.com",
+    "foto": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQqPc49ziUrHtvruoZRUIPmWAlQGF-BFwd8qA&s",
+    "color": "#59ff00",
+    "comisionBase": 40,
+    "especialidades": [],
+    "activo": true,
+    "creado": "2026-02-13T19:32:12.131Z",
+    "ultimo_acceso": "2026-02-27T13:24:28.808Z",
+    "serviciosIds": []
+  },
+  {
+    "id": "1771608641929",
+    "nombre": "Laura gamarra",
+    "username": "Lgamarra",
+    "password": "pbkdf2$120000$e20d5d2e9e91229b55edcebf45c28eb1$82b50323dd01006dbc9c95d28edfd31f36f6e117549485d0f48909936d241722",
+    "rol": "colaborador",
+    "telefono": "360661",
+    "email": "kjflkjflkjf",
+    "foto": "",
+    "color": "#fd0808",
+    "comisionBase": 3,
+    "especialidades": [],
+    "serviciosIds": [
+      "1770916357216",
+      "1770916443298",
+      "1770916457451"
+    ],
+    "activo": true,
+    "creado": "2026-02-20T17:30:42.018Z",
+    "ultimo_acceso": "2026-02-20T17:31:41.658Z"
+  }
+]

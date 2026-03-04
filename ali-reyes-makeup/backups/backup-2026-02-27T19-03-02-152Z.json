@@ -1,0 +1,827 @@
+{
+  "servicios": [
+    {
+      "id": "1770916357216",
+      "nombre": "CORTE",
+      "descripcion": "--------------------------",
+      "duracion": 60,
+      "precio": 120000,
+      "categoria": "corte",
+      "imagen": "https://res.cloudinary.com/dvpl7yu5s/image/upload/v1772201016/ali-reyes/rod8rizfxtjnqg0olin1.png",
+      "imagenes": [
+        "https://res.cloudinary.com/dvpl7yu5s/image/upload/v1772201016/ali-reyes/rod8rizfxtjnqg0olin1.png"
+      ],
+      "activo": true,
+      "creado": "2026-02-12T17:12:37.216Z",
+      "comisionColaborador": 0
+    },
+    {
+      "id": "1770916443298",
+      "nombre": "TINTE",
+      "descripcion": "--------------------",
+      "duracion": 58,
+      "precio": 100000,
+      "categoria": "color",
+      "imagen": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSla5zcqO0RG_ZNxAB_w1Qv7PN94KA6PWQtBw&s",
+      "imagenes": [
+        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSla5zcqO0RG_ZNxAB_w1Qv7PN94KA6PWQtBw&s"
+      ],
+      "activo": true,
+      "creado": "2026-02-12T17:14:03.298Z",
+      "comisionColaborador": 0
+    },
+    {
+      "id": "1770916457451",
+      "nombre": "LAVADO",
+      "descripcion": "----------------------------",
+      "duracion": 60,
+      "precio": 120000,
+      "categoria": "tratamiento",
+      "imagen": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQBwk-4Sy86ShY9dNk4p0_yBkhlbVYDGiAQdw&s",
+      "imagenes": [
+        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQBwk-4Sy86ShY9dNk4p0_yBkhlbVYDGiAQdw&s"
+      ],
+      "activo": true,
+      "creado": "2026-02-12T17:14:17.451Z"
+    }
+  ],
+  "turnos": [
+    {
+      "id": "1770916505864",
+      "nombre": "maria",
+      "ci": "12345",
+      "telefono": "123465689",
+      "servicios": [
+        {
+          "id": "1770916357216",
+          "nombre": "CORTE V",
+          "duracion": 60,
+          "precio": 100000
+        },
+        {
+          "id": "1770916443298",
+          "nombre": "tinte",
+          "duracion": 58,
+          "precio": 100000
+        },
+        {
+          "id": "1770916457451",
+          "nombre": "lavado",
+          "duracion": 60,
+          "precio": 100000
+        }
+      ],
+      "duracion": 178,
+      "precio": 300000,
+      "fecha": "2026-02-13",
+      "hora": "16:00",
+      "estado": "confirmado",
+      "creado": "2026-02-12T17:15:05.864Z",
+      "contactos": 1,
+      "ultimoContacto": "2026-02-12T17:15:50.822Z",
+      "contactoHistorial": [
+        {
+          "fecha": "2026-02-12T17:15:50.822Z",
+          "canal": "whatsapp",
+          "mensaje": "Hola maria, soy Ali Reyes MakeUp. Tu turno: CORTE V, tinte, lavado el 2026-02-13 a las 16:00. ¿Podrías confirmar tu asistencia?"
+        }
+      ],
+      "servicio": ""
+    },
+    {
+      "id": "1770919947275",
+      "nombre": "maria",
+      "ci": "12345",
+      "telefono": "32323232323",
+      "servicios": [
+        {
+          "id": "1770916357216",
+          "nombre": "CORTE",
+          "duracion": 60,
+          "precio": 120000
+        },
+        {
+          "id": "1770916457451",
+          "nombre": "LAVADO",
+          "duracion": 60,
+          "precio": 120000
+        }
+      ],
+      "duracion": 120,
+      "precio": 240000,
+      "fecha": "2026-02-13",
+      "hora": "14:00",
+      "estado": "confirmado",
+      "creado": "2026-02-12T18:12:27.275Z",
+      "contactos": 1,
+      "ultimoContacto": "2026-02-12T18:13:25.635Z",
+      "contactoHistorial": [
+        {
+          "fecha": "2026-02-12T18:13:25.635Z",
+          "canal": "whatsapp",
+          "mensaje": "Hola maria, soy Ali Reyes MakeUp. Tu turno: CORTE, LAVADO el 2026-02-13 a las 14:00. ¿Podrías confirmar tu asistencia?"
+        }
+      ],
+      "servicio": ""
+    },
+    {
+      "id": "1771256804781",
+      "nombre": "maria",
+      "ci": "12345",
+      "telefono": "32323232323",
+      "servicios": [
+        {
+          "id": "1770916357216",
+          "nombre": "CORTE",
+          "duracion": 60,
+          "precio": 120000
+        },
+        {
+          "id": "1770916457451",
+          "nombre": "LAVADO",
+          "duracion": 60,
+          "precio": 120000
+        }
+      ],
+      "servicio": "",
+      "duracion": 120,
+      "precio": 240000,
+      "fecha": "2026-02-17",
+      "hora": "16:00",
+      "estado": "completado",
+      "creado": "2026-02-16T15:46:44.782Z",
+      "colaboradorId": "1771011132105",
+      "colaboradorNombre": "Sandra Cabrera",
+      "colaboradorComision": 96000,
+      "colaboradorPorcentaje": 40,
+      "asignadoAutomatico": false,
+      "contactos": 3,
+      "ultimoContacto": "2026-02-20T17:25:51.663Z",
+      "contactoHistorial": [
+        {
+          "fecha": "2026-02-16T15:47:17.477Z",
+          "canal": "whatsapp",
+          "mensaje": "Hola maria, soy Ali Reyes MakeUp. Tu turno: CORTE, LAVADO el 2026-02-17 a las 16:00. ¿Podrías confirmar tu asistencia?"
+        },
+        {
+          "fecha": "2026-02-19T13:50:48.646Z",
+          "canal": "whatsapp",
+          "mensaje": "Hola maria, soy Ali Reyes MakeUp. Tu turno: CORTE, LAVADO el 2026-02-17 a las 16:00. ¿Podrías confirmar tu asistencia?"
+        },
+        {
+          "fecha": "2026-02-20T17:25:51.663Z",
+          "canal": "whatsapp",
+          "mensaje": "Hola maria, soy Ali Reyes MakeUp. Tu turno: CORTE, LAVADO el 2026-02-17 a las 16:00. ¿Podrías confirmar tu asistencia?"
+        }
+      ]
+    },
+    {
+      "id": "1771508991047",
+      "nombre": "maria",
+      "ci": "1122334455",
+      "telefono": "1221313131",
+      "servicios": [
+        {
+          "id": "1770916357216",
+          "nombre": "CORTE",
+          "duracion": 60,
+          "precio": 120000
+        },
+        {
+          "id": "1770916443298",
+          "nombre": "TINTE",
+          "duracion": 58,
+          "precio": 100000
+        },
+        {
+          "id": "1770916457451",
+          "nombre": "LAVADO",
+          "duracion": 60,
+          "precio": 120000
+        }
+      ],
+      "servicio": "",
+      "duracion": 178,
+      "precio": 340000,
+      "fecha": "2026-02-20",
+      "hora": "16:00",
+      "estado": "completado",
+      "creado": "2026-02-19T13:49:51.047Z",
+      "colaboradorId": "1771011132105",
+      "colaboradorNombre": "Sandra Cabrera",
+      "colaboradorComision": 136000,
+      "colaboradorPorcentaje": 40,
+      "asignadoAutomatico": false,
+      "contactos": 2,
+      "ultimoContacto": "2026-02-20T17:26:33.414Z",
+      "contactoHistorial": [
+        {
+          "fecha": "2026-02-20T17:26:21.503Z",
+          "canal": "whatsapp",
+          "mensaje": "Hola maria, soy Ali Reyes MakeUp. Tu turno: CORTE, TINTE, LAVADO el 2026-02-20 a las 16:00. ¿Podrías confirmar tu asistencia?"
+        },
+        {
+          "fecha": "2026-02-20T17:26:33.414Z",
+          "canal": "whatsapp",
+          "mensaje": "Hola maria, soy Ali Reyes MakeUp. Tu turno: CORTE, TINTE, LAVADO el 2026-02-20 a las 16:00. ¿Podrías confirmar tu asistencia?"
+        }
+      ]
+    },
+    {
+      "id": "1771608125942",
+      "nombre": "laura",
+      "ci": "123444",
+      "telefono": "333313213",
+      "servicios": [
+        {
+          "id": "1770916357216",
+          "nombre": "CORTE",
+          "duracion": 60,
+          "precio": 120000
+        },
+        {
+          "id": "1770916457451",
+          "nombre": "LAVADO",
+          "duracion": 60,
+          "precio": 120000
+        }
+      ],
+      "servicio": "",
+      "duracion": 120,
+      "precio": 240000,
+      "fecha": "2026-02-21",
+      "hora": "10:30",
+      "estado": "completado",
+      "creado": "2026-02-20T17:22:05.942Z",
+      "colaboradorId": "1771011132105",
+      "colaboradorNombre": "Sandra Cabrera",
+      "colaboradorComision": 96000,
+      "colaboradorPorcentaje": 40,
+      "asignadoAutomatico": false,
+      "contactos": 2,
+      "ultimoContacto": "2026-02-20T17:26:34.123Z",
+      "contactoHistorial": [
+        {
+          "fecha": "2026-02-20T17:26:21.766Z",
+          "canal": "whatsapp",
+          "mensaje": "Hola laura, soy Ali Reyes MakeUp. Tu turno: CORTE, LAVADO el 2026-02-21 a las 10:30. ¿Podrías confirmar tu asistencia?"
+        },
+        {
+          "fecha": "2026-02-20T17:26:34.123Z",
+          "canal": "whatsapp",
+          "mensaje": "Hola laura, soy Ali Reyes MakeUp. Tu turno: CORTE, LAVADO el 2026-02-21 a las 10:30. ¿Podrías confirmar tu asistencia?"
+        }
+      ]
+    },
+    {
+      "id": "1771608680290",
+      "nombre": "maria",
+      "ci": "114444",
+      "telefono": "500451",
+      "servicios": [
+        {
+          "id": "1770916357216",
+          "nombre": "CORTE",
+          "duracion": 60,
+          "precio": 120000
+        }
+      ],
+      "servicio": "CORTE",
+      "duracion": 60,
+      "precio": 120000,
+      "fecha": "2026-02-23",
+      "hora": "16:30",
+      "estado": "completado",
+      "creado": "2026-02-20T17:31:20.290Z",
+      "colaboradorId": "1771608641929",
+      "colaboradorNombre": "Laura gamarra",
+      "colaboradorComision": 3600,
+      "colaboradorPorcentaje": 3,
+      "asignadoAutomatico": false,
+      "contactos": 0,
+      "ultimoContacto": null,
+      "contactoHistorial": []
+    }
+  ],
+  "lookbook": [],
+  "giftcards": [
+    {
+      "id": "g-1771263496640",
+      "clienteNombre": "Sandra",
+      "telefono": "0981323438",
+      "destinatario": "Isabella",
+      "monto": 300000,
+      "servicios": [
+        {
+          "id": "1770916357216",
+          "nombre": "CORTE",
+          "precio": 120000,
+          "duracion": 60
+        }
+      ],
+      "mensaje": "PARA ISA3",
+      "estado": "entregada",
+      "banco": {
+        "banco": "Banco a definir",
+        "titular": "Ali Reyes",
+        "cuenta": "0000-0000-0000",
+        "alias": "ALI.REYES",
+        "qrUrl": ""
+      },
+      "comprobante": "",
+      "creado": "2026-02-16T17:38:16.640Z",
+      "medioPago": "transferencia",
+      "estadoHistorial": [
+        {
+          "estado": "pendiente",
+          "fecha": "2026-02-16T17:38:16.640Z"
+        },
+        {
+          "estado": "pagada",
+          "fecha": "2026-02-16T17:38:27.876Z"
+        },
+        {
+          "estado": "entregada",
+          "fecha": "2026-02-16T18:11:13.116Z"
+        }
+      ],
+      "fechaPago": "2026-02-16T17:38:27.876Z",
+      "actualizado": "2026-02-16T18:11:13.116Z",
+      "fechaEntrega": "2026-02-16T18:11:13.116Z"
+    }
+  ],
+  "usuarios": [
+    {
+      "id": "1",
+      "username": "admin",
+      "password": "pbkdf2$120000$9324bf2d89e5537074a8fe53f8452dca$1260647609da5af8c86a24be0868be754dc155ba2a2b2443599664baf5a1e68b",
+      "nombre": "Administrador",
+      "email": "admin@alireyes.com",
+      "telefono": "+595981234567",
+      "rol": "admin",
+      "activo": true,
+      "creado": "2024-01-01T00:00:00.000Z",
+      "ultimo_acceso": "2026-02-27T19:02:19.722Z"
+    },
+    {
+      "id": "1771011132105",
+      "nombre": "Sandra Cabrera",
+      "username": "Scabrera",
+      "password": "pbkdf2$120000$dcdba663facb7a61db3fa90c49c346f0$95885e22c09c97ef0fb2434f054c0c1289673b45e8c421d077192ebf5cf48054",
+      "rol": "colaborador",
+      "telefono": "09989898",
+      "email": "kdjkajdkja@gmail.com",
+      "foto": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQqPc49ziUrHtvruoZRUIPmWAlQGF-BFwd8qA&s",
+      "color": "#59ff00",
+      "comisionBase": 40,
+      "especialidades": [],
+      "activo": true,
+      "creado": "2026-02-13T19:32:12.131Z",
+      "ultimo_acceso": "2026-02-27T13:24:28.808Z",
+      "serviciosIds": []
+    },
+    {
+      "id": "1771608641929",
+      "nombre": "Laura gamarra",
+      "username": "Lgamarra",
+      "password": "pbkdf2$120000$e20d5d2e9e91229b55edcebf45c28eb1$82b50323dd01006dbc9c95d28edfd31f36f6e117549485d0f48909936d241722",
+      "rol": "colaborador",
+      "telefono": "360661",
+      "email": "kjflkjflkjf",
+      "foto": "",
+      "color": "#fd0808",
+      "comisionBase": 3,
+      "especialidades": [],
+      "serviciosIds": [
+        "1770916357216",
+        "1770916443298",
+        "1770916457451"
+      ],
+      "activo": true,
+      "creado": "2026-02-20T17:30:42.018Z",
+      "ultimo_acceso": "2026-02-20T17:31:41.658Z"
+    }
+  ],
+  "banners": [],
+  "sorteos": [
+    {
+      "id": "s-1771608513712",
+      "titulo": "Sorteo",
+      "ganadores": [
+        {
+          "nombre": "laura",
+          "telefono": "333313213",
+          "ci": "123444"
+        }
+      ],
+      "totalParticipantes": 2,
+      "fecha": "2026-02-20T17:28:33.712Z",
+      "desde": "2026-02-19",
+      "hasta": "2026-02-21"
+    },
+    {
+      "id": "s-1771608516546",
+      "titulo": "Sorteo",
+      "ganadores": [
+        {
+          "nombre": "maria",
+          "telefono": "1221313131",
+          "ci": "1122334455"
+        }
+      ],
+      "totalParticipantes": 2,
+      "fecha": "2026-02-20T17:28:36.546Z",
+      "desde": "2026-02-19",
+      "hasta": "2026-02-21"
+    },
+    {
+      "id": "s-1771608518897",
+      "titulo": "Sorteo",
+      "ganadores": [
+        {
+          "nombre": "laura",
+          "telefono": "333313213",
+          "ci": "123444"
+        }
+      ],
+      "totalParticipantes": 2,
+      "fecha": "2026-02-20T17:28:38.897Z",
+      "desde": "2026-02-19",
+      "hasta": "2026-02-21"
+    },
+    {
+      "id": "s-1772201516839",
+      "titulo": "Sorteo",
+      "ganadores": [
+        {
+          "nombre": "maria",
+          "telefono": "500451",
+          "ci": "114444"
+        }
+      ],
+      "totalParticipantes": 5,
+      "fecha": "2026-02-27T14:11:56.840Z",
+      "desde": null,
+      "hasta": null
+    },
+    {
+      "id": "s-1772201520100",
+      "titulo": "Sorteo",
+      "ganadores": [
+        {
+          "nombre": "maria",
+          "telefono": "1221313131",
+          "ci": "1122334455"
+        }
+      ],
+      "totalParticipantes": 5,
+      "fecha": "2026-02-27T14:12:00.100Z",
+      "desde": null,
+      "hasta": null
+    },
+    {
+      "id": "s-1772201521692",
+      "titulo": "Sorteo",
+      "ganadores": [
+        {
+          "nombre": "laura",
+          "telefono": "333313213",
+          "ci": "123444"
+        }
+      ],
+      "totalParticipantes": 5,
+      "fecha": "2026-02-27T14:12:01.692Z",
+      "desde": null,
+      "hasta": null
+    },
+    {
+      "id": "s-1772201557269",
+      "titulo": "Sorteo",
+      "ganadores": [
+        {
+          "nombre": "maria",
+          "telefono": "1221313131",
+          "ci": "1122334455"
+        }
+      ],
+      "totalParticipantes": 5,
+      "fecha": "2026-02-27T14:12:37.269Z",
+      "desde": null,
+      "hasta": null
+    },
+    {
+      "id": "s-1772201562820",
+      "titulo": "Sorteo",
+      "ganadores": [
+        {
+          "nombre": "laura",
+          "telefono": "333313213",
+          "ci": "123444"
+        }
+      ],
+      "totalParticipantes": 5,
+      "fecha": "2026-02-27T14:12:42.820Z",
+      "desde": null,
+      "hasta": null
+    },
+    {
+      "id": "s-1772201563652",
+      "titulo": "Sorteo",
+      "ganadores": [
+        {
+          "nombre": "maria",
+          "telefono": "123465689",
+          "ci": "12345"
+        }
+      ],
+      "totalParticipantes": 5,
+      "fecha": "2026-02-27T14:12:43.652Z",
+      "desde": null,
+      "hasta": null
+    },
+    {
+      "id": "s-1772201564253",
+      "titulo": "Sorteo",
+      "ganadores": [
+        {
+          "nombre": "maria",
+          "telefono": "32323232323",
+          "ci": "12345"
+        }
+      ],
+      "totalParticipantes": 5,
+      "fecha": "2026-02-27T14:12:44.253Z",
+      "desde": null,
+      "hasta": null
+    },
+    {
+      "id": "s-1772201564699",
+      "titulo": "Sorteo",
+      "ganadores": [
+        {
+          "nombre": "laura",
+          "telefono": "333313213",
+          "ci": "123444"
+        }
+      ],
+      "totalParticipantes": 5,
+      "fecha": "2026-02-27T14:12:44.699Z",
+      "desde": null,
+      "hasta": null
+    },
+    {
+      "id": "s-1772201565227",
+      "titulo": "Sorteo",
+      "ganadores": [
+        {
+          "nombre": "maria",
+          "telefono": "1221313131",
+          "ci": "1122334455"
+        }
+      ],
+      "totalParticipantes": 5,
+      "fecha": "2026-02-27T14:12:45.227Z",
+      "desde": null,
+      "hasta": null
+    },
+    {
+      "id": "s-1772201565725",
+      "titulo": "Sorteo",
+      "ganadores": [
+        {
+          "nombre": "laura",
+          "telefono": "333313213",
+          "ci": "123444"
+        }
+      ],
+      "totalParticipantes": 5,
+      "fecha": "2026-02-27T14:12:45.725Z",
+      "desde": null,
+      "hasta": null
+    },
+    {
+      "id": "s-1772201566275",
+      "titulo": "Sorteo",
+      "ganadores": [
+        {
+          "nombre": "maria",
+          "telefono": "123465689",
+          "ci": "12345"
+        }
+      ],
+      "totalParticipantes": 5,
+      "fecha": "2026-02-27T14:12:46.275Z",
+      "desde": null,
+      "hasta": null
+    },
+    {
+      "id": "s-1772201637348",
+      "titulo": "Sorteo",
+      "ganadores": [
+        {
+          "nombre": "maria",
+          "telefono": "500451",
+          "ci": "114444"
+        }
+      ],
+      "totalParticipantes": 5,
+      "fecha": "2026-02-27T14:13:57.348Z",
+      "desde": null,
+      "hasta": null
+    },
+    {
+      "id": "s-1772201638238",
+      "titulo": "Sorteo",
+      "ganadores": [
+        {
+          "nombre": "maria",
+          "telefono": "1221313131",
+          "ci": "1122334455"
+        }
+      ],
+      "totalParticipantes": 5,
+      "fecha": "2026-02-27T14:13:58.238Z",
+      "desde": null,
+      "hasta": null
+    },
+    {
+      "id": "s-1772201638907",
+      "titulo": "Sorteo",
+      "ganadores": [
+        {
+          "nombre": "maria",
+          "telefono": "500451",
+          "ci": "114444"
+        }
+      ],
+      "totalParticipantes": 5,
+      "fecha": "2026-02-27T14:13:58.907Z",
+      "desde": null,
+      "hasta": null
+    },
+    {
+      "id": "s-1772201639573",
+      "titulo": "Sorteo",
+      "ganadores": [
+        {
+          "nombre": "maria",
+          "telefono": "1221313131",
+          "ci": "1122334455"
+        }
+      ],
+      "totalParticipantes": 5,
+      "fecha": "2026-02-27T14:13:59.573Z",
+      "desde": null,
+      "hasta": null
+    },
+    {
+      "id": "s-1772201640020",
+      "titulo": "Sorteo",
+      "ganadores": [
+        {
+          "nombre": "laura",
+          "telefono": "333313213",
+          "ci": "123444"
+        }
+      ],
+      "totalParticipantes": 5,
+      "fecha": "2026-02-27T14:14:00.020Z",
+      "desde": null,
+      "hasta": null
+    },
+    {
+      "id": "s-1772201640653",
+      "titulo": "Sorteo",
+      "ganadores": [
+        {
+          "nombre": "maria",
+          "telefono": "500451",
+          "ci": "114444"
+        }
+      ],
+      "totalParticipantes": 5,
+      "fecha": "2026-02-27T14:14:00.653Z",
+      "desde": null,
+      "hasta": null
+    },
+    {
+      "id": "s-1772201641060",
+      "titulo": "Sorteo",
+      "ganadores": [
+        {
+          "nombre": "maria",
+          "telefono": "500451",
+          "ci": "114444"
+        }
+      ],
+      "totalParticipantes": 5,
+      "fecha": "2026-02-27T14:14:01.060Z",
+      "desde": null,
+      "hasta": null
+    },
+    {
+      "id": "s-1772201641500",
+      "titulo": "Sorteo",
+      "ganadores": [
+        {
+          "nombre": "maria",
+          "telefono": "1221313131",
+          "ci": "1122334455"
+        }
+      ],
+      "totalParticipantes": 5,
+      "fecha": "2026-02-27T14:14:01.500Z",
+      "desde": null,
+      "hasta": null
+    }
+  ],
+  "config": {
+    "horarioApertura": "08:00",
+    "horarioCierre": "19:00",
+    "intervaloTurnos": 30,
+    "horariosPorDia": {
+      "lunVie": {
+        "activo": true,
+        "apertura": "08:00",
+        "cierre": "19:00"
+      },
+      "sab": {
+        "activo": true,
+        "apertura": "08:00",
+        "cierre": "19:00"
+      },
+      "dom": {
+        "activo": false,
+        "apertura": "08:00",
+        "cierre": "19:00"
+      }
+    },
+    "bloqueosAgenda": [],
+    "whatsappTemplates": {
+      "confirmacion": "Hola {nombre}, confirmamos tu turno de {servicios} el {fecha} a las {hora}.",
+      "recordatorio": "Hola {nombre}, te recordamos tu turno de {servicios} el {fecha} a las {hora}.",
+      "reprogramacion": "Hola {nombre}, necesitamos reprogramar tu turno de {servicios} del {fecha} a las {hora}."
+    },
+    "metasColaborador": {
+      "semanalComision": 0,
+      "mensualComision": 0
+    },
+    "whatsappNumber": "595981234567",
+    "pendientesAlerta": 10,
+    "ciudad": "Asunción, Paraguay",
+    "direccion": "Dirección a confirmar",
+    "mapEmbedUrl": "https://www.openstreetmap.org/export/embed.html?bbox=-57.674%2C-25.314%2C-57.510%2C-25.252&layer=mapnik&marker=-25.283%2C-57.594",
+    "mapUrl": "https://www.openstreetmap.org/?mlat=-25.283&mlon=-57.594#map=13/-25.283/-57.594",
+    "instagramUrl": "https://instagram.com/",
+    "facebookUrl": "https://facebook.com/",
+    "tiktokUrl": "https://tiktok.com/",
+    "giftcardMontos": [
+      100000,
+      200000,
+      300000
+    ],
+    "giftcardMensaje": "Regalá una experiencia Ali Reyes con pago por transferencia.",
+    "giftcardVencimientoDias": 365,
+    "heroMosaic": [
+      {
+        "titulo": "Promo destacada",
+        "descripcion": "Descubre nuestras promociones de temporada.",
+        "imagen": "https://res.cloudinary.com/dvpl7yu5s/image/upload/v1771525269/ali-reyes/cbtaqbzuiyu6amydxtpu.png",
+        "imagenes": [
+          "https://res.cloudinary.com/dvpl7yu5s/image/upload/v1771525269/ali-reyes/cbtaqbzuiyu6amydxtpu.png",
+          "https://res.cloudinary.com/dvpl7yu5s/image/upload/v1771525271/ali-reyes/yoti2murvejzmuvcgx14.png",
+          "https://res.cloudinary.com/dvpl7yu5s/image/upload/v1771525274/ali-reyes/olt94lyb9q01eqbcqchu.png",
+          "https://res.cloudinary.com/dvpl7yu5s/image/upload/v1771525275/ali-reyes/l0xtjvurykflpns4g29n.png"
+        ],
+        "url": "",
+        "activo": true
+      },
+      {
+        "titulo": "Novedades",
+        "descripcion": "Nuevos servicios y combinaciones para ti.",
+        "imagen": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRpi424_l1Ig8fWgoTWQlN3iaEluKNN1EnYjA&s",
+        "imagenes": [
+          "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRpi424_l1Ig8fWgoTWQlN3iaEluKNN1EnYjA&s"
+        ],
+        "url": "",
+        "activo": true
+      },
+      {
+        "titulo": "Reserva express",
+        "descripcion": "Agenda en minutos y confirma por WhatsApp.",
+        "imagen": "",
+        "imagenes": [],
+        "url": "",
+        "activo": false
+      }
+    ],
+    "bankInfo": {
+      "banco": "Banco a definir",
+      "titular": "Ali Reyes",
+      "cuenta": "0000-0000-0000",
+      "alias": "ALI.REYES",
+      "qrUrl": ""
+    }
+  },
+  "exportado": "2026-02-27T19:03:02.152Z"
+}
